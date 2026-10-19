@@ -39,13 +39,29 @@ public class MainTest {
      * Test of main method, of class Main.
      * @throws java.lang.Exception
      */
-    @Test
-    public void testMain()throws Exception {
+     @Test
+    public void testMain() throws Exception {
         System.out.println("main");
-        String[] args = null;
-        Main.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        // 1. Simulate the input that the console is waiting for
+        String simulatedInput = "Keegan\n"; 
+        
+        // 2. Setup the stream redirection
+        java.io.InputStream savedIn = System.in;
+        java.io.ByteArrayInputStream mockIn = new java.io.ByteArrayInputStream(simulatedInput.getBytes());
+        
+        try {
+            System.setIn(mockIn);
+            
+            // 3. Run your main method with the mocked input
+            String[] args = null;
+            Main.main(args);
+            
+        } finally {
+            // 4. Clean up and restore the system input
+            System.setIn(savedIn);
+        }
     }
+   
     
 }

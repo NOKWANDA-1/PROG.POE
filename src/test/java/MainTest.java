@@ -39,26 +39,26 @@ public class MainTest {
      * Test of main method, of class Main.
      * @throws java.lang.Exception
      */
-     @Test
+    @Test
     public void testMain() throws Exception {
         System.out.println("main");
         
-        // 1. Simulate the input that the console is waiting for
-        String simulatedInput = "Keegan\n"; 
         
-        // 2. Setup the stream redirection
+        String simulatedInput = "Keegan\n" +      // For First Name
+                                "keegan_user\n" +  // For Username
+                                "Password123!\n" + // For Password
+                                "0718693022\n" +    // For Phone Number
+                                "1\n" +            // Selects "1) Send Message" from the menu
+                                "0\n";             
+        
         java.io.InputStream savedIn = System.in;
         java.io.ByteArrayInputStream mockIn = new java.io.ByteArrayInputStream(simulatedInput.getBytes());
         
         try {
             System.setIn(mockIn);
-            
-            // 3. Run your main method with the mocked input
             String[] args = null;
             Main.main(args);
-            
         } finally {
-            // 4. Clean up and restore the system input
             System.setIn(savedIn);
         }
     }

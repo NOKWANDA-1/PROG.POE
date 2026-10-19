@@ -37,9 +37,10 @@ public class MainTest {
 
     /**
      * Test of main method, of class Main.
+     * @throws java.lang.Exception
      */
     @Test
-    public void testMain() {
+    public void testMain()throws Exception {
         System.out.println("main");
         String[] args = null;
         Main.main(args);

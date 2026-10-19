@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
     class Login{
@@ -69,7 +70,7 @@ public  String returnLoginStatus (boolean isLoggedIn){
     }
 public class Main{
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner (System.in);
         Login user = new Login();
             
@@ -101,8 +102,13 @@ public class Main{
             boolean isSuccess = user.loginUser(loginUser, loginPass);
             System.out.println(user.returnLoginStatus(isSuccess));
           
+            if (isSuccess) {
+                Message app = new Message();
+                app.startQuickChatApp(sc);
+            }
         
         }
+        sc.close();
     }
     
 
